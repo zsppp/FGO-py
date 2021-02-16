@@ -3,11 +3,22 @@
  <author>hgjazhgj</author>
  <class>fgoMainWindow</class>
  <widget class="QMainWindow" name="fgoMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>488</width>
+    <height>587</height>
+   </rect>
+  </property>
   <property name="font">
    <font>
     <family>Microsoft YaHei UI Light</family>
     <pointsize>11</pointsize>
    </font>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle">
    <string>FGO script - hgjazhgj</string>
@@ -2883,7 +2894,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>495</width>
+     <width>488</width>
      <height>30</height>
     </rect>
    </property>
@@ -2904,7 +2915,7 @@
      <string>文件</string>
     </property>
     <addaction name="MENU_FILE_EXPLORER"/>
-    <addaction name="MENU_FILE_PSHERE"/>
+    <addaction name="MENU_FILE_PWSHERE"/>
    </widget>
    <widget class="QMenu" name="MENU_SCRIPT">
     <property name="title">
@@ -2922,6 +2933,8 @@
     <addaction name="separator"/>
     <addaction name="MENU_CONTROL_REFRESHDEVICE"/>
     <addaction name="MENU_CONTROL_MAPKEY"/>
+    <addaction name="separator"/>
+    <addaction name="MENU_CONTROL_EXEC"/>
    </widget>
    <addaction name="MENU_FILE"/>
    <addaction name="MENU_SCRIPT"/>
@@ -2972,11 +2985,6 @@
     </font>
    </property>
   </action>
-  <action name="actionsadad">
-   <property name="text">
-    <string/>
-   </property>
-  </action>
   <action name="MENU_CONTROL_REFRESHDEVICE">
    <property name="text">
     <string>重新建立连接</string>
@@ -3013,7 +3021,7 @@
     </font>
    </property>
   </action>
-  <action name="MENU_FILE_PSHERE">
+  <action name="MENU_FILE_PWSHERE">
    <property name="text">
     <string>PowerShell</string>
    </property>
@@ -3060,6 +3068,19 @@
     <font>
      <family>Microsoft YaHei UI Light</family>
      <pointsize>11</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="MENU_CONTROL_EXEC">
+   <property name="text">
+    <string>Execute</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI Light</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
   </action>
@@ -3458,10 +3479,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>MENU_FILE_PSHERE</sender>
+   <sender>MENU_FILE_PWSHERE</sender>
    <signal>triggered()</signal>
    <receiver>fgoMainWindow</receiver>
-   <slot>psHere()</slot>
+   <slot>pwsHere()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -3521,6 +3542,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>MENU_CONTROL_EXEC</sender>
+   <signal>triggered()</signal>
+   <receiver>fgoMainWindow</receiver>
+   <slot>exec()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>243</x>
+     <y>293</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -3559,10 +3596,11 @@
   <slot>refreshDevice()</slot>
   <slot>runGacha()</slot>
   <slot>mapKey(bool)</slot>
-  <slot>psHere()</slot>
+  <slot>pwsHere()</slot>
   <slot>stopLater()</slot>
   <slot>runJackpot()</slot>
   <slot>runMailFiltering()</slot>
+  <slot>exec()</slot>
  </slots>
  <buttongroups>
   <buttongroup name="BTG_FRIEND"/>
